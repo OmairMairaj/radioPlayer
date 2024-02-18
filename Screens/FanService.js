@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         // justifyContent: "center"
     },
     header: {
-        height: 80,
+        height: (Platform.OS === 'ios') ? 70 : 50,
         // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
         // opacity: 0.5,
@@ -119,19 +119,19 @@ const styles = StyleSheet.create({
     backButton: {
         position: "absolute",
         left: 16,
-        bottom: 5,
+        bottom: 0,
         padding: 5,
     },
     title: {
         color: "#fdf9f8",
-        fontWeight: "bold",
-        fontFamily: 'Indie Flower',
+        // fontWeight: "bold",
+        fontFamily: (Platform.OS === 'ios') ? 'Indie Flower' : 'indieflower_regular',
         fontSize: 26,
     },
     iconButton: {
         position: "absolute",
         right: 16,
-        bottom: 5,
+        bottom: 1,
         padding: 5,
     },
     icon: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         // fontWeight: 'bold',
         // fontSize: 20,
         textAlign: 'center',
-        fontFamily: 'Permanent Marker',
+        fontFamily: (Platform.OS === 'ios') ? 'Permanent Marker' : 'permanentmarker_regular',
         marginTop: 10,
     }
 });

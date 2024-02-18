@@ -142,14 +142,17 @@ export default function Help() {
 const styles = StyleSheet.create({
     container: {
         height: '100%',
+        flex: 1,
     },
     image: {
         flex: 1,
     },
     header: {
-        height: 80,
+        height: (Platform.OS === 'ios') ? 70 : 50,
         // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
+        // opacity: 0.5,
+        // marginTop: -50,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
@@ -157,19 +160,19 @@ const styles = StyleSheet.create({
     backButton: {
         position: "absolute",
         left: 16,
-        bottom: 5,
+        bottom: 0,
         padding: 5,
     },
     title: {
         color: "#fdf9f8",
-        fontWeight: "bold",
-        fontFamily: 'Indie Flower',
+        // fontWeight: "bold",
+        fontFamily: (Platform.OS === 'ios') ? 'Indie Flower' : 'indieflower_regular',
         fontSize: 26,
     },
     iconButton: {
         position: "absolute",
         right: 16,
-        bottom: 5,
+        bottom: 1,
         padding: 5,
     },
     icon: {
@@ -208,8 +211,8 @@ const styles = StyleSheet.create({
     },
     subjectHeader: {
         fontSize: 16,
-        fontWeight: '900',
-        fontFamily: 'Poiret One',
+        // fontWeight: '900',
+        fontFamily: (Platform.OS === 'ios') ? 'Poiret One' : 'poiretone_regular',
         color: '#fdf9f8',
     },
     subjectContainer: {
@@ -248,7 +251,7 @@ const styles = StyleSheet.create({
     checkboxLabel: {
         flex: 1,
         color: '#fdf9f8',
-        fontFamily: 'Poiret One',
+        fontFamily: (Platform.OS === 'ios') ? 'Poiret One' : 'poiretone_regular',
     },
     messageInput: {
         height: 100,
@@ -256,10 +259,11 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 10,
         width: '90%',
+        textAlignVertical: 'top',
         backgroundColor: '#56565b',
         marginTop: 20,
         color: '#fdf9f8',
-        fontFamily: 'Poiret One',
+        fontFamily: (Platform.OS === 'ios') ? 'Poiret One' : 'poiretone_regular',
     },
     emailBox: {
         marginBottom: 20,
@@ -288,7 +292,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         padding: 5,
         color: '#fdf9f8',
-        fontFamily: 'Poiret One',
+        fontFamily: (Platform.OS === 'ios') ? 'Poiret One' : 'poiretone_regular',
         textTransform: 'lowercase',
     },
     submitButton: {
@@ -299,8 +303,8 @@ const styles = StyleSheet.create({
     submitButtonText: {
         color: '#fdf9f8',
         textAlign: 'center',
-        fontFamily: 'Poiret One',
-        fontWeight: 'bold',
+        fontFamily: (Platform.OS === 'ios') ? 'Poiret One' : 'poiretone_regular',
+        // fontWeight: 'bold',
     },
 
 });

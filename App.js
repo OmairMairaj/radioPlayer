@@ -78,6 +78,7 @@ export default function App() {
     <View style={styles.app}>
       <ImageBackground source={homebg} resizeMode="cover" style={styles.image}>
         <StatusBar
+          backgroundColor={'#5D7931fd'}
           barStyle={'light-content'}
         />
         {/* <SafeAreaView> */}

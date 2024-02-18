@@ -83,7 +83,7 @@ export default function Home() {
         return (
             <View style={styles.header}>
                 <Text style={styles.title}>House Station Live!</Text>
-                <TouchableOpacity style={styles.iconButton} onPress={() => navigation.navigate('Product')}>
+                <TouchableOpacity style={styles.iconButton} onPress={() => { }}>
                     <Icon name={"ellipsis-vertical"} style={styles.icon} />
                 </TouchableOpacity>
             </View>
@@ -143,9 +143,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        height: 80,
+        height: (Platform.OS === 'ios') ? 70 : 50,
         // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
+        // opacity: 0.5,
+        // marginTop: -50,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
@@ -153,19 +155,19 @@ const styles = StyleSheet.create({
     backButton: {
         position: "absolute",
         left: 16,
-        bottom: 5,
+        bottom: 0,
         padding: 5,
     },
     title: {
         color: "#fdf9f8",
-        fontWeight: "bold",
-        fontFamily: 'Indie Flower',
+        // fontWeight: "bold",
+        fontFamily: (Platform.OS === 'ios') ? 'Indie Flower' : 'indieflower_regular',
         fontSize: 26,
     },
     iconButton: {
         position: "absolute",
         right: 16,
-        bottom: 5,
+        bottom: 1,
         padding: 5,
     },
     icon: {
