@@ -4,8 +4,10 @@ import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/
 import Home from '../Screens/Home';
 import { Easing } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
-import Product from '../Screens/Product';
+import TurnOn from '../Screens/TurnOn';
 import { useNavigation } from "@react-navigation/native";
+import Help from '../Screens/Help';
+import FanService from '../Screens/FanService';
 
 const MainStack = createStackNavigator();
 
@@ -46,7 +48,9 @@ const MainNaviagtion = () => {
             }}
         >
             <MainStack.Screen name="Home" component={Home} />
-            <MainStack.Screen name="Product" component={Product} />
+            <MainStack.Screen name="TurnOn" component={TurnOn} />
+            <MainStack.Screen name="FanService" component={FanService} />
+            <MainStack.Screen name="Help" component={Help} />
         </MainStack.Navigator >
     )
 }

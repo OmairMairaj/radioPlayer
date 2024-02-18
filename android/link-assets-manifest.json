@@ -2,8 +2,16 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/IndieFlower-Regular.ttf",
+      "path": "assets/fonts/indieflower_regular.ttf",
       "sha1": "dab8ff786dd1c6a3e8fa8a54d4d59cf9a703efe1"
+    },
+    {
+      "path": "assets/fonts/permanentmarker_regular.ttf",
+      "sha1": "bc40bfbc7eb7715af82b136429848a3c7a83a2b3"
+    },
+    {
+      "path": "assets/fonts/poiretone_regular.ttf",
+      "sha1": "75769d8c5e3ff4a2cd158b8c1ed59bb5ecea8c8a"
     }
   ]
 }

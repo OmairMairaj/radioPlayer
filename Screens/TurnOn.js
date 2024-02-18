@@ -16,11 +16,11 @@ export default function Product() {
                 <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                     <Icon name={"chevron-back-outline"} style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.title}>House Station Live!</Text>
+                <Text style={styles.title}>turn me on</Text>
                 {/* <View style={{ position: "absolute", right: 16, bottom: 16, backgroundColor: '#ffff' }}> */}
-                {/* <TouchableOpacity style={styles.iconButton} onPress={() => navigation.navigate('Product')}>
+                <TouchableOpacity style={styles.iconButton} onPress={() => { }}>
                     <Icon name={"ellipsis-vertical"} style={styles.icon} />
-                </TouchableOpacity> */}
+                </TouchableOpacity>
                 {/* </View> */}
             </View>
         )
@@ -29,10 +29,10 @@ export default function Product() {
         <View style={styles.container}>
             <ImageBackground source={homebg} resizeMode="cover" style={styles.image}>
                 <Header />
-                <Text style={styles.text}>Product Screen</Text>
+                {/* <Text style={styles.text}>Product Screen</Text>
                 <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Product')}>
                     <Icon name={"chevron-back-outline"} style={styles.icon} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </ImageBackground>
 
         </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 80,
-        padding: 10,
+        // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
         // opacity: 0.5,
         // marginTop: -50,
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     title: {
         color: "#fdf9f8",
         fontWeight: "bold",
-        fontFamily: "IndieFlower-Regular",
-        fontSize: 20,
+        fontFamily: 'Indie Flower',
+        fontSize: 26,
     },
     iconButton: {
         position: "absolute",
