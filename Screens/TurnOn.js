@@ -1,14 +1,15 @@
 import React from 'react'
-import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons";
 import homebg from '../assets/homebg.jpg';
 import { useNavigation } from "@react-navigation/native";
+import mono from '../assets/MONO.png';
+import surround from '../assets/SURROUND.png';
+import support from '../assets/SUPPORT.png';
 
 
-export default function Product() {
+export default function TurnOn() {
     const navigation = useNavigation();
-
 
     const Header = () => {
         return (
@@ -17,11 +18,9 @@ export default function Product() {
                     <Icon name={"chevron-back-outline"} style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.title}>turn me on</Text>
-                {/* <View style={{ position: "absolute", right: 16, bottom: 16, backgroundColor: '#ffff' }}> */}
                 <TouchableOpacity style={styles.iconButton} onPress={() => { }}>
                     <Icon name={"ellipsis-vertical"} style={styles.icon} />
                 </TouchableOpacity>
-                {/* </View> */}
             </View>
         )
     }
@@ -29,10 +28,25 @@ export default function Product() {
         <View style={styles.container}>
             <ImageBackground source={homebg} resizeMode="cover" style={styles.image}>
                 <Header />
-                {/* <Text style={styles.text}>Product Screen</Text>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Product')}>
-                    <Icon name={"chevron-back-outline"} style={styles.icon} />
-                </TouchableOpacity> */}
+                <View style={styles.view}>
+                    <View style={styles.box}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => navigation.navigate("HD")}>
+                            <Image source={surround} style={styles.imageStyle} />
+                            <Text style={styles.buttonText}>HD</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => navigation.navigate("LQ")}>
+                            <Image source={mono} style={styles.imageStyle} />
+                            <Text style={styles.buttonText}>LQ</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                    <View style={styles.box2}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button2} onPress={() => navigation.navigate("Donate")}>
+                            <Image source={support} style={styles.imageStyle} />
+                            <Text style={styles.buttonText}>Donate</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </ImageBackground>
 
         </View>
@@ -42,26 +56,14 @@ export default function Product() {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        // height: Dimensions.get('window').height,
-        // width: Dimensions.get('window').width,
-        // backgroundColor: '#0e1628',
-        // paddingTop: Platform.OS === 'ios' ? 0 : 30,
-        // paddingHorizontal: 20,
-        // alignItems: "center",
-        // justifyContent: "center",
         height: '100%',
     },
     image: {
         flex: 1,
-        // justifyContent: "center"
     },
     header: {
         height: (Platform.OS === 'ios') ? 70 : 50,
-        // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
-        // opacity: 0.5,
-        // marginTop: -50,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
@@ -74,7 +76,6 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#fdf9f8",
-        // fontWeight: "bold",
         fontFamily: (Platform.OS === 'ios') ? 'Indie Flower' : 'indieflower_regular',
         fontSize: 26,
     },
@@ -93,5 +94,57 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 16,
     },
+    view: {
+        marginTop: 50,
+        justifyContent: "center",
+        width: '100%',
+    },
+    box: {
+        justifyContent: "center",
+        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: '100%',
+    },
+    box2: {
+        justifyContent: "center",
+        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: '100%',
+    },
+    button: {
+        width: 150,
+        height: 150,
+        backgroundColor: 'rgba(140, 140, 140, 0.5)',
+        padding: 20,
+        borderRadius: 10,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button2: {
+        width: '80%',
+        height: 150,
+        backgroundColor: 'rgba(140, 140, 140, 0.5)',
+        padding: 20,
+        borderRadius: 10,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imageStyle: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+    buttonText: {
+        color: '#fdf9f8',
+        textAlign: 'center',
+        fontFamily: (Platform.OS === 'ios') ? 'Permanent Marker' : 'permanentmarker_regular',
+        marginTop: 10,
+    }
 
 });

@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react'
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons";
 import homebg from '../assets/homebg.jpg';
 import { useNavigation } from "@react-navigation/native";
@@ -16,16 +15,27 @@ import { Linking } from 'react-native';
 export default function FanService() {
     const navigation = useNavigation();
 
-    const openURL = (url) => {
-        Linking.openURL(url).catch(err => console.error('Failed to open URL:', err));
-    };
-
 
     const handleButtonClick = () => {
-        const url = "https://app.ecwid.com/script.js?12564269&data_platform=code";  // Replace with your actual store URL
+        const url = "http://hsl.company.site";
         Linking.openURL(url).catch(err => console.error('Failed to open URL:', err));
     };
 
+    const openURLInApp = async (appURL, webURL) => {
+        try {
+            const canOpen = await Linking.canOpenURL(appURL);
+            console.log(canOpen);
+            if (canOpen) {
+                console.log('URL opened in app')
+                await Linking.openURL(appURL);
+            } else {
+                console.log('URL opened in browser')
+                await Linking.openURL(webURL);
+            }
+        } catch (error) {
+            console.error('An error occurred while trying to open the URL:', error);
+        }
+    };
 
 
     const Header = () => {
@@ -35,11 +45,9 @@ export default function FanService() {
                     <Icon name={"chevron-back-outline"} style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.title}>Fan Service</Text>
-                {/* <View style={{ position: "absolute", right: 16, bottom: 16, backgroundColor: '#ffff' }}> */}
                 <TouchableOpacity style={styles.iconButton} onPress={() => { }}>
                     <Icon name={"ellipsis-vertical"} style={styles.icon} />
                 </TouchableOpacity>
-                {/* </View> */}
             </View>
         )
     }
@@ -53,32 +61,33 @@ export default function FanService() {
                             <Image source={fanStore} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Fan Store</Text>
                         </TouchableOpacity>
+
                         {/* Twitter Button */}
-                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURL('https://twitter.com/stationlive_com')}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURLInApp('twitter://user?screen_name=stationlive_com', 'https://twitter.com/stationlive_com')}>
                             <Image source={twitter} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Twitter</Text>
                         </TouchableOpacity>
 
-                        {/* YouTube Button */}
-                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURL('https://youtube.com/@housestationlive/videos')}>
+                        {/* Youtube Button */}
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURLInApp('youtube://user/HouseStationLive', 'https://youtube.com/@housestationlive/videos')}>
                             <Image source={youtube} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Youtube</Text>
                         </TouchableOpacity>
 
                         {/* Twitch Button */}
-                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURL('https://twitch.tv/housestationlive')}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURLInApp('twitch://stream/housestationlive', 'https://twitch.tv/housestationlive')}>
                             <Image source={twitch} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Twitch</Text>
                         </TouchableOpacity>
 
                         {/* Instagram Button */}
-                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURL('https://instagram.com/housestationlive')}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURLInApp('instagram://user?username=housestationlive', 'https://instagram.com/housestationlive')}>
                             <Image source={instagram} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Instagram</Text>
                         </TouchableOpacity>
 
                         {/* Facebook Button */}
-                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURL('https://facebook.com/housestationlive')}>
+                        <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => openURLInApp('https://facebook.com/profile.php/?id=100063740344776', 'https://facebook.com/housestationlive')}>
                             <Image source={facebook} style={styles.imageStyle} />
                             <Text style={styles.buttonText}>Facebook</Text>
                         </TouchableOpacity>
@@ -93,25 +102,13 @@ export default function FanService() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: Dimensions.get('window').height,
-        // width: Dimensions.get('window').width,
-        // backgroundColor: '#0e1628',
-        // paddingTop: Platform.OS === 'ios' ? 0 : 30,
-        // paddingHorizontal: 20,
-        // alignItems: "center",
-        // justifyContent: "center",
-        // height: '100%',
     },
     image: {
         flex: 1,
-        // justifyContent: "center"
     },
     header: {
         height: (Platform.OS === 'ios') ? 70 : 50,
-        // padding: 10,
         backgroundColor: "rgba(1, 26, 66, 0.5)",
-        // opacity: 0.5,
-        // marginTop: -50,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-end",
@@ -124,7 +121,6 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#fdf9f8",
-        // fontWeight: "bold",
         fontFamily: (Platform.OS === 'ios') ? 'Indie Flower' : 'indieflower_regular',
         fontSize: 26,
     },
@@ -147,7 +143,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         justifyContent: "center",
         width: '100%',
-        // backgroundColor: 'rgba(1, 26, 66, 0.5)',
     },
     box: {
         justifyContent: "center",
@@ -156,10 +151,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         width: '100%',
-        // backgroundColor: 'rgba(1, 255, 66, 0.5)',
     },
     button: {
-        // width: '40%',
         width: 150,
         height: 150,
         backgroundColor: 'rgba(140, 140, 140, 0.5)',
@@ -176,10 +169,11 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fdf9f8',
-        // fontWeight: 'bold',
-        // fontSize: 20,
         textAlign: 'center',
         fontFamily: (Platform.OS === 'ios') ? 'Permanent Marker' : 'permanentmarker_regular',
         marginTop: 10,
     }
 });
+
+
+

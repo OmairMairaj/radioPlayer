@@ -113,7 +113,7 @@ export default function Home() {
                             <Image source={page1} style={image1Expanded ? styles.imageExpandedStyle : styles.imageStyle} />
                         </Animated.View>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={1} onPress={() => handleClick(2, 'Home')}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => handleClick(2, 'Mixes')}>
                         <Animated.View style={[styles.imageContainer, { height: imageHeight2 }]}>
                             <Image source={page2} style={image2Expanded ? styles.imageExpandedStyle : styles.imageStyle} />
                         </Animated.View>
@@ -181,15 +181,15 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         width: '100%',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
         },
         shadowOpacity: 0.7,
         shadowRadius: 5.00,
-
         elevation: 24,
+        backgroundColor: '#000',
     },
     imageStyle: {
         width: '100%',

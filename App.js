@@ -18,6 +18,8 @@ import {
 import homebg from './assets/homebg.jpg';
 import Navigation from './Routes/Navigation';
 import { NavigationContainer } from '@react-navigation/native';
+import emailjs from 'emailjs-com';
+emailjs.init("AKIKRAEk_-uuY6B20");
 
 // import checkVersion from 'react-native-store-version';
 // import VersionCheck from 'react-native-version-check';
@@ -78,7 +80,7 @@ export default function App() {
     <View style={styles.app}>
       <ImageBackground source={homebg} resizeMode="cover" style={styles.image}>
         <StatusBar
-          backgroundColor={'#5D7931fd'}
+          backgroundColor='#000'
           barStyle={'light-content'}
         />
         {/* <SafeAreaView> */}

@@ -7,24 +7,49 @@ import homebg from '../assets/homebg.jpg';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView, TextInput, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Keyboard } from 'react-native'
+import validator from 'validator';
+import emailjs from 'emailjs-com';
 
 
 export default function Help() {
+    emailjs.init("AKIKRAEk_-uuY6B20");
     const navigation = useNavigation();
     const [message, setMessage] = useState('');
     const [replyEmail, setReplyEmail] = useState('');
     const [selectedSubject, setSelectedSubject] = useState('');
 
+    const validateEmail = (email) => {
+        return validator.isEmail(email);
+    };
+
     const handleSubmit = () => {
-        // Implement what happens when the user submits the form
         if (!selectedSubject || !message) {
             alert('Please select a subject and enter a message');
             return;
         }
-        console.log(selectedSubject, message, replyEmail);
+        if (replyEmail && !validateEmail(replyEmail)) {
+            alert('Please enter a valid reply email address');
+            return;
+        }
+
+        // Prepare the template parameters
+        const templateParams = {
+            subject: selectedSubject,
+            message: message,
+            reply_to: replyEmail,
+            to_email: 'omairmairaj@gmail.com'
+        };
+
+        // Use the EmailJS send method
+        emailjs.send('service_0itwuad', 'template_31acjsn', templateParams)
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Your message has been sent successfully!');
+            }, (err) => {
+                console.log('FAILED...', err);
+                alert('Failed to send the message, please try again.');
+            });
     };
-
-
 
     // const CheckboxOption = ({ label, isSelected, onToggle }) => (
     //     <TouchableOpacity activeOpacity={1} style={styles.checkboxContainer} onPress={onToggle}>

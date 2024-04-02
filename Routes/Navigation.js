@@ -8,6 +8,11 @@ import TurnOn from '../Screens/TurnOn';
 import { useNavigation } from "@react-navigation/native";
 import Help from '../Screens/Help';
 import FanService from '../Screens/FanService';
+import Mixes from '../Screens/Mixes';
+import SplashScreen from '../Screens/SplashScreen';
+import Donate from '../Screens/Donate';
+import HD from '../Screens/HD';
+import LQ from '../Screens/LQ';
 
 const MainStack = createStackNavigator();
 
@@ -47,10 +52,15 @@ const MainNaviagtion = () => {
 
             }}
         >
+            <MainStack.Screen name="SplashScreen" component={SplashScreen} />
             <MainStack.Screen name="Home" component={Home} />
             <MainStack.Screen name="TurnOn" component={TurnOn} />
             <MainStack.Screen name="FanService" component={FanService} />
             <MainStack.Screen name="Help" component={Help} />
+            <MainStack.Screen name="Mixes" component={Mixes} />
+            <MainStack.Screen name="Donate" component={Donate} />
+            <MainStack.Screen name="HD" component={HD} />
+            <MainStack.Screen name="LQ" component={LQ} />
         </MainStack.Navigator >
     )
 }
